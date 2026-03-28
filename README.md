@@ -1,36 +1,128 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# MyTask Quiz App
+
+A modern, interactive quiz application built with Next.js, designed to test your knowledge across various subjects.
+
+## Features
+
+- **Multiple Subjects**: Take quizzes on different topics
+- **Customizable Question Count**: Choose the number of questions per quiz
+- **Real-time Progress Tracking**: Visual progress bar showing current question and completion percentage
+- **Instant Feedback**: Immediate feedback on correct/incorrect answers
+- **Score Tracking**: Track correct answers and wrong attempts
+- **Responsive Design**: Works seamlessly on desktop and mobile devices
+- **Smooth Animations**: Enhanced user experience with Framer Motion animations
+
+## Tech Stack
+
+- **Framework**: Next.js 16 with App Router
+- **Language**: TypeScript
+- **State Management**: Zustand
+- **Data Fetching**: TanStack React Query
+- **HTTP Client**: Axios
+- **UI Components**: Shadcn/ui with Radix UI
+- **Styling**: Tailwind CSS
+- **Animations**: Framer Motion
+- **Icons**: Lucide React
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
+- Node.js 18+
+- npm, yarn, pnpm, or bun
+
+### Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/sohit-mishra/EdzyHackathon_TaskThird.git
+cd mytask
+```
+
+2. Install dependencies:
+```bash
+npm install
+# or
+yarn install
+# or
+pnpm install
+```
+
+3. Start the development server:
 ```bash
 npm run dev
 # or
 yarn dev
 # or
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Usage
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. **Home Page**: Select a subject and number of questions
+2. **Quiz Page**: Answer questions with multiple choice options
+3. **Feedback**: See immediate feedback after each answer
+4. **Results**: View your final score and wrong attempts
+5. **Restart**: Take another quiz anytime
 
-## Learn More
+## Project Structure
 
-To learn more about Next.js, take a look at the following resources:
+```
+├── app/                    # Next.js app directory
+│   ├── globals.css        # Global styles
+│   ├── layout.tsx         # Root layout
+│   ├── page.tsx           # Home page
+│   ├── quiz/              # Quiz pages
+│   │   ├── page.tsx       # Quiz taking page
+│   │   └── result/        # Results page
+│   └── not-found.tsx      # 404 page
+├── components/            # Reusable components
+│   ├── common/            # Common components (Loader, Error, etc.)
+│   ├── quiz/              # Quiz-specific components
+│   └── ui/                # UI components from shadcn
+├── hooks/                 # Custom React hooks
+├── lib/                   # Utility libraries
+├── store/                 # Zustand state management
+├── types/                 # TypeScript type definitions
+├── api/                   # API configuration and calls
+└── services/              # Business logic services
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## API Integration
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+The app integrates with a quiz API that provides questions based on:
+- Subject selection
+- Number of questions requested
 
-## Deploy on Vercel
+API Endpoint: `/task-1/quizDetails`
+- Method: POST
+- Body: `{ examSubjectName: string, numberOfQuestions: number }`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Available Scripts
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run start` - Start production server
+- `npm run lint` - Run ESLint
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Run tests and linting
+5. Submit a pull request
+
+## License
+
+This project is licensed under the MIT License.
+
+## Acknowledgments
+
+- Built with [Next.js](https://nextjs.org)
+- UI components from [shadcn/ui](https://ui.shadcn.com)
+- Icons from [Lucide](https://lucide.dev)
+
+
