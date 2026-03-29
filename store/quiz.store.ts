@@ -6,8 +6,9 @@ interface QuizStore {
   currentIndex: number;
   score: number;
   wrongAttempts: number;
+  examSubjectName: string;
 
-  setQuestions: (questions: QuizQuestion[]) => void;
+  setQuestions: (questions: QuizQuestion[], examName?: string) => void;
   nextQuestion: () => void;
   incrementScore: () => void;
   incrementWrong: () => void;
@@ -19,8 +20,10 @@ export const useQuizStore = create<QuizStore>((set) => ({
   currentIndex: 0,
   score: 0,
   wrongAttempts: 0,
+  examSubjectName: "",
 
-  setQuestions: (questions) => set({ questions }),
+  setQuestions: (questions, examName) =>
+    set({ questions, examSubjectName: examName || "" }),
 
   nextQuestion: () =>
     set((state) => ({
@@ -43,5 +46,6 @@ export const useQuizStore = create<QuizStore>((set) => ({
       currentIndex: 0,
       score: 0,
       wrongAttempts: 0,
+      examSubjectName: "",
     }),
 }));

@@ -7,7 +7,7 @@ export const useInitializeQuiz = (data?: QuizResponse) => {
 
   useEffect(() => {
     if (data?.questions && questions.length === 0) {
-      setQuestions(data.questions);
+      setQuestions(data.questions, data.examSubjectName);
     }
   }, [data, questions.length, setQuestions]);
 };
