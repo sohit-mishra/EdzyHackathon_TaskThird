@@ -133,7 +133,7 @@ export default function QuizPageContent() {
       </header>
 
       {/* Main Content */}
-      <main className="flex-1 overflow-y-auto p-4 pb-32">
+      <main className="flex-1 overflow-y-auto p-4 pb-40">
         <div className="max-w-2xl mx-auto">
           <QuestionCard question={q.question} />
           <OptionsList 
@@ -147,8 +147,8 @@ export default function QuizPageContent() {
       </main>
 
       {/* Bottom Actions */}
-      <footer className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 p-4">
-        <div className="max-w-2xl mx-auto">
+      <footer className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 p-4 shadow-lg z-40">
+        <div className="max-w-2xl mx-auto w-full">
           {/* Solution Display */}
           {showSolution && q.solution && (
             <div className="mb-4 p-4 bg-blue-50 border border-blue-200 rounded-lg">
@@ -162,15 +162,15 @@ export default function QuizPageContent() {
             {/* Solution Button */}
             <button
               onClick={() => setShowSolution(!showSolution)}
-              className="text-sm font-medium text-gray-700 hover:text-gray-900 transition px-3 py-2"
+              className="text-sm font-medium text-gray-700 hover:text-gray-900 transition px-3 py-2 whitespace-nowrap"
               disabled={!selectedAnswer}
             >
               Solution
             </button>
 
             {/* Timer */}
-            <div className="flex items-center gap-2 text-xs text-gray-600 flex-1 justify-center">
-              <Clock className="w-4 h-4" />
+            <div className="flex items-center gap-2 text-sm text-gray-600 flex-1 justify-center whitespace-nowrap">
+              <Clock className="w-4 h-4 flex-shrink-0" />
               <span>{formatTime(time)} / {formatTime(totalTime)}</span>
             </div>
 
@@ -178,7 +178,7 @@ export default function QuizPageContent() {
             <button
               onClick={handleNext}
               disabled={!selectedAnswer}
-              className={`px-6 py-2 rounded-lg font-semibold text-white transition ${
+              className={`px-6 py-2 rounded-lg font-semibold text-white transition whitespace-nowrap ${
                 selectedAnswer
                   ? "bg-blue-600 hover:bg-blue-700"
                   : "bg-gray-300 cursor-not-allowed"
