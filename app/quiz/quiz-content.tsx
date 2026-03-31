@@ -49,7 +49,7 @@ export default function QuizPageContent() {
     }
   }, [questions.length, currentIndex, router]);
 
-  // Timer
+  // Timer (runs continuously)
   useEffect(() => {
     const interval = setInterval(() => {
       setTime((t) => t + 1);
@@ -58,18 +58,28 @@ export default function QuizPageContent() {
     return () => clearInterval(interval);
   }, []);
 
-  // Auto-advance when time ends
+  // Reset state when question changes ✅ IMPORTANT FIX
   useEffect(() => {
-    if (time >= totalTime && questions.length > 0 && !hasAutoAdvanced.current) {
+    setTime(0);
+    setSelectedAnswer(undefined);
+    setShowSolution(false);
+    hasAutoAdvanced.current = false;
+  }, [currentIndex]);
+
+  // Auto-advance when time ends ✅
+  useEffect(() => {
+    if (
+      time >= totalTime &&
+      questions.length > 0 &&
+      !hasAutoAdvanced.current
+    ) {
       hasAutoAdvanced.current = true;
 
       if (!selectedAnswer) {
         incrementWrong();
       }
 
-      setTimeout(() => {
-        nextQuestion();
-      }, 300);
+      nextQuestion(); // direct call (cleaner)
     }
   }, [
     time,
@@ -112,9 +122,7 @@ export default function QuizPageContent() {
   };
 
   const handleNext = () => {
-    setTimeout(() => {
-      nextQuestion();
-    }, 300);
+    nextQuestion();
   };
 
   return (
